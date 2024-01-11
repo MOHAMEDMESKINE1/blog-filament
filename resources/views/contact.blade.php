@@ -15,28 +15,65 @@
                     <h2>Send us a message</h2>
                   </div>
                   <div class="content">
-                    <form id="contact" action="" method="post">
+                      @if(session('success'))
+                          <div class="alert alert-success my-2">
+                              {{ session('success') }}
+                          </div>
+                      @endif
+                    <form id="contact" action="{{route('store.contact')}}" method="post">
+                      @csrf
+
                       <div class="row">
                         <div class="col-md-6 col-sm-12">
                           <fieldset>
-                            <input name="name" type="text" id="name" placeholder="Your name" required="">
+                            <input name="name" type="text" id="name" value="{{old('name')}}" placeholder="Your name"  >
+                            
+                            @error('name')
+                              <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
                           </fieldset>
                         </div>
                         <div class="col-md-6 col-sm-12">
                           <fieldset>
-                            <input name="email" type="text" id="email" placeholder="Your email" required="">
+                            <input name="email" type="text" id="email" value="{{old('email')}}" placeholder="Your email" >
+
+                            @error('email')
+                              <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
                           </fieldset>
                         </div>
                         <div class="col-md-12 col-sm-12">
                           <fieldset>
-                            <input name="subject" type="text" id="subject" placeholder="Subject">
+                            <input name="subject" type="text" id="subject" value="{{old('subject')}}" placeholder="Subject">
+
+                             @error('subject')
+                              <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
                           </fieldset>
                         </div>
                         <div class="col-lg-12">
                           <fieldset>
-                            <textarea name="message" rows="6" id="message" placeholder="Your Message" required=""></textarea>
+                            <textarea name="message" rows="6" id="message"  placeholder="Your Message" >{{old('message')}} </textarea>
+
+                            @error('message')
+                            <span class="text-danger">{{ $message }}</span>
+                           @enderror 
+
                           </fieldset>
                         </div>
+                        <div class="col-lg-12">
+                          <div class="form-group ">
+                              <strong>ReCaptcha:</strong>
+                              <div class="g-recaptcha my-4" data-sitekey='6Lef9U0pAAAAAAN2-80uZXpGIuRIHAnA_uJac3Qv'></div>
+                              @error('g-recaptcha-response')
+                                  <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                              @enderror
+                             
+                          </div>  
+                      </div>
                         <div class="col-lg-12">
                           <fieldset>
                             <button type="submit" id="form-submit" class="main-button">Send Message</button>

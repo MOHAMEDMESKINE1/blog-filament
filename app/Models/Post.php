@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Category;
+use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\HasMedia;
@@ -23,5 +24,9 @@ class Post extends Model implements HasMedia
     public function tags(){
         
         return  $this->belongsToMany(Tag::class);
+    }
+    public function geturl()
+    {
+        return Filament::getUrl($this);
     }
 }

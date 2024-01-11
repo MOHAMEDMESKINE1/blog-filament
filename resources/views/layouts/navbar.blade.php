@@ -17,14 +17,18 @@
             <li class="nav-item">
               <a class="nav-link" href={{route('blog')}}>Blog Entries</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link" href={{route('posts')}}>Post Details</a>
-            </li>
+            </li> --}}
             <li class="nav-item">
               <a class="nav-link" href={{route('contact')}}>Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href={{url('admin/login')}}>Log In</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
+  

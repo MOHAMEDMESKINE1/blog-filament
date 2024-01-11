@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,12 @@ Route::controller(HomeController::class)->group(function(){
         Route::get('/','index')->name('home');
         Route::get('/about','about')->name('about');
         Route::get('/blog','blog')->name('blog');
-        Route::get('/posts','posts')->name('posts');
+        Route::get('/posts/{slug}','posts')->name('posts');
         Route::get('/contact','contact')->name('contact');
+});
+Route::controller(ContactController::class)->group(function(){
+
+    // Route::get('/','index')->name('home');
+    Route::post('/contact','store')->name('store.contact');
+   
 });

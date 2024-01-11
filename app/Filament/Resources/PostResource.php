@@ -31,6 +31,7 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use App\Filament\Resources\PostResource\RelationManagers\TagsRelationManager;
 use App\Filament\Resources\PostResource\Widgets\PostOverview;
 use App\Filament\Resources\PostResource\Widgets\StatsOverview;
+use Filament\Resources\Forms\Components\ImageUpload;
 
 class PostResource extends Resource
 {
