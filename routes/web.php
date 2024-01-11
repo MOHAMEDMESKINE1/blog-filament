@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -13,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::controller(HomeController::class)->group(function(){
 
-Route::get('/', function () {
-    $posts = Post::with("tags")->get();
-    return view('welcome',compact('posts'));
+        Route::get('/','index')->name('home');
+        Route::get('/about','about')->name('about');
+        Route::get('/blog','blog')->name('blog');
+        Route::get('/posts','posts')->name('posts');
+        Route::get('/contact','contact')->name('contact');
 });
