@@ -14,7 +14,7 @@
               <div class="meta-category">
                 <span>{{$post->category->name}}</span>
               </div>
-              <a href="post-details.html"><h4>{!! $post->title !!}</h4></a>
+              <a href="{{route('posts',$post->slug)}}"><h4>{!!$post->title!!}</h4></a>
               <ul class="post-info">
                 <li><a href="#">{{auth()->user()->name ?? "TESTING"}}</a></li>
                 <li><a href="#">{{$post->created_at}}</a></li>
@@ -80,6 +80,8 @@
                @empty
                    <p>No posts</p>
                @endforelse
+
+               {{$posts->links()}}
             </div>
         
           </div>
@@ -149,7 +151,7 @@
                 <div class="content">
                   <ul>
                     @forelse ($tags as $tag)
-                    <li><a href="#">{{ $tag->name}}</a></li>
+                    <li><a href="{{route('posts_tag',$tag->name)}}">{{ $tag->name}}</a></li>
                         
                     @empty
                         <p>No Tags</p>

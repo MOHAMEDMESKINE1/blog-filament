@@ -51,9 +51,98 @@
                   </div>
                 </div>
               </div>
-            
+              <div class="col-lg-5">
+                <div class="sidebar-item comments">
+                  <div class="sidebar-heading">
+                    <h2>{{$comments->count()}} comments</h2>
+                  </div>
+                  <div class="">
+                   
+                      @forelse ($comments as $comment)
+                      <ul>
+                        <li>
+                          <div class="author-thumb">
+                            <img src="assets/images/comment-author-01.jpg" alt="">
+                          </div>
+                          <div class="right-content">
+                            <h4>{{$comment->user->name }}<span>{{$comment->created_at->format('F j, Y')}}</span></h4>
+                            <p>{{$comment->content}}</p>
+                            {{-- @if ($comment->parent_id)
+                                <p>Replied to: {{ $comment->parent->content }}</p>
+                            @endif --}}
+                          </div>
+                        </li>
+                      </ul>
+
+                          <!-- Reply Comment -->
+                          
+                          {{-- <form action="{{ route('comments.reply', ['id' => $post->id, 'parent_id' => $comment->id]) }}" method="post">
+                              @csrf
+                              <textarea name="content" rows="2" placeholder="Reply to this comment"></textarea>
+                              <button type="submit">Reply</button>
+                          </form> --}}
+                          <!-- Display Replies -->
+                          
+                          {{-- @forelse($comment->replies as $reply)
+                              <ul>
+                                <li class="replied">
+                                  <div class="author-thumb">
+                                    <img src="assets/images/comment-author-02.jpg" alt="">
+                                  </div>
+                                  <div class="right-content">
+                                    <h4>{{ $reply->user->name }} on <span>{{ $reply->created_at->format('F j, Y \a\t h:i A') }}</span></h4>
+                                    <p>{{ $reply->content }}</p>
+                                  </div>
+                                </li>
+                              </ul>
+                            @empty
+                                <p>No replies yet.</p>
+                            @endforelse --}}
+
+                      @empty
+                        <p>No Comments</p>
+                      @endforelse
+                       
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="sidebar-item submit-comment">
+                  <div class="sidebar-heading">
+                    <h2>Leave a comment</h2>
+                  </div>
+                  <div class="content">
+                    @if(session('success'))
+                      <div class="alert alert-success my-2">
+                          {{ session('success') }}
+                      </div>
+                    @endif
+                    <form action="{{ route('comments.store', $post->id) }}" method="post">
+                      @csrf
+                      <div class="row">
+                       
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <textarea name="content" rows="6" id="content" placeholder="Type your comment" ></textarea>
+                            @error('content')
+                               <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                          </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <button type="submit" id="form-submit" class="main-button">Submit</button>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
         <div class="col-lg-4">
           <div class="sidebar">
@@ -64,8 +153,7 @@
                     @csrf
                     <div class="d-flex justify-content-between">
                       <input type="text" name="search" class="searchText" placeholder="type to search..." autocomplete="on">
-                      <input type="reset" name="" class="btn btn-sm btn-secondary w-25 text-white fw-bold" value="Reset" >
-    
+                      <a type="reset" class="btn  btn-sm btn-secondary "  href="{{route('home')}}">Reset</a>
                     </div>
                   </form>
                 </div>
@@ -107,7 +195,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-12">
+               <div class="col-lg-12">
                 <div class="sidebar-item tags">
                   <div class="sidebar-heading">
                     <h2>Tag Clouds</h2>
@@ -115,7 +203,7 @@
                   <div class="content">
                     <ul>
                       @forelse ($tags as $tag)
-                      <li><a href="#">{{ $tag->name}}</a></li>
+                      <li><a href="{{route('posts_tag',$tag->name)}}">{{ $tag->name}}</a></li>
                           
                       @empty
                           <p>No Tags</p>
@@ -124,7 +212,7 @@
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> 
             </div>
           </div>
         </div>

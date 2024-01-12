@@ -25,8 +25,9 @@ class Post extends Model implements HasMedia
         
         return  $this->belongsToMany(Tag::class);
     }
-    public function geturl()
+    public function comments()
     {
-        return Filament::getUrl($this);
+        return $this->hasMany(Comment::class);
     }
+    
 }
