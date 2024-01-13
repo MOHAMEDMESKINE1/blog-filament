@@ -170,7 +170,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         // FilamentServiceProvider::class,
-
+        Usamamuneerchaudhary\Commentify\Providers\CommentifyServiceProvider::class,
+        Livewire\LivewireServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
     ])->toArray(),
 
     /*

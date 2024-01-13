@@ -18,7 +18,7 @@ class CommentController extends Controller
         $post = Post::findOrFail($id);
 
         $comment = new Comment([
-            'content' => $request->input('content'),
+            'body' => $request->input('body'),
             'post_id' =>$post->id,
         ]);
 
@@ -36,7 +36,7 @@ class CommentController extends Controller
         $post = Post::findOrFail($id);
 
         $comment = new Comment([
-            'content' => $request->input('content'),
+            'body' => $request->input('body'),
             'post_id' =>$post->id,
             'parent_id'=>$parent_id
         ]);

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Vite;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-
+use Yajra\DataTables\Html\Builder;
 class AppServiceProvider extends ServiceProvider
 {
   
@@ -30,14 +30,8 @@ class AppServiceProvider extends ServiceProvider
             return $user !== null;
         });
         Paginator::useBootstrapFive();
-        // Filament::getUrl('get_media_url', function ($path) {
-        //     if (is_null($path)) {
-        //         return null;
-        //     }
-    
-        //     return url(config('filament.media.path') . '/' . ltrim($path, '/'));
-        // });  
-        
+       
+        Builder::useVite();
     }
    
 }

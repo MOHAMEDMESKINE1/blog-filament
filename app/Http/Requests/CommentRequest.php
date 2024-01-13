@@ -22,13 +22,13 @@ class CommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'content' => 'required|string',
+            'body' => 'required|string',
         ];
     }
     public function messages(): array
     {
         return [
-            'content.required' => 'The content field is required',
+            'body.required' => 'The body field is required',
         ];
     }
 }

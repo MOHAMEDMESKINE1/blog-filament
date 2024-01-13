@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('script')
+<script src={{asset("vendor/jquery/jquery.min.js")}}></script>
+    
+@endsection
 @section('content')
 <!-- Banner Starts Here -->
 <div class="main-banner header-text">

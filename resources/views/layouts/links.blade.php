@@ -5,6 +5,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="{{asset("vendor/bootstrap/css/bootstrap.min.css")}}" rel="stylesheet">
+  <script src="{{asset("vendor/jquery/jquery.min.js")}}"></script>
 
 
   <!-- Additional CSS Files -->

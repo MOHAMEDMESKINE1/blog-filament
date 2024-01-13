@@ -29,7 +29,7 @@
                       <li><a href="#">{{$post->created_at}}</a></li>
                       <li><a href="#">12 Comments</a></li>
                     </ul>
-                    <p>{!! $post->content!!}</p>
+                    <p>{!! $post->body!!}</p>
                     <div class="post-options">
                       <div class="row">
                         <div class="col-6">
@@ -51,7 +51,8 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-5">
+             
+               <div class="col-lg-5">
                 <div class="sidebar-item comments">
                   <div class="sidebar-heading">
                     <h2>{{$comments->count()}} comments</h2>
@@ -66,10 +67,10 @@
                           </div>
                           <div class="right-content">
                             <h4>{{$comment->user->name }}<span>{{$comment->created_at->format('F j, Y')}}</span></h4>
-                            <p>{{$comment->content}}</p>
-                            {{-- @if ($comment->parent_id)
-                                <p>Replied to: {{ $comment->parent->content }}</p>
-                            @endif --}}
+                            <p>{{$comment->body}}</p>
+                            @if ($comment->parent_id)
+                                <p>Replied to: {{ $comment->parent->body }}</p>
+                            @endif
                           </div>
                         </li>
                       </ul>
@@ -78,12 +79,12 @@
                           
                           {{-- <form action="{{ route('comments.reply', ['id' => $post->id, 'parent_id' => $comment->id]) }}" method="post">
                               @csrf
-                              <textarea name="content" rows="2" placeholder="Reply to this comment"></textarea>
+                              <textarea name="body" rows="2" placeholder="Reply to this comment"></textarea>
                               <button type="submit">Reply</button>
                           </form> --}}
                           <!-- Display Replies -->
                           
-                          {{-- @forelse($comment->replies as $reply)
+                         {{-- @forelse($comment->replies as $reply)
                               <ul>
                                 <li class="replied">
                                   <div class="author-thumb">
@@ -91,17 +92,17 @@
                                   </div>
                                   <div class="right-content">
                                     <h4>{{ $reply->user->name }} on <span>{{ $reply->created_at->format('F j, Y \a\t h:i A') }}</span></h4>
-                                    <p>{{ $reply->content }}</p>
+                                    <p>{{ $reply->body }}</p>
                                   </div>
                                 </li>
                               </ul>
                             @empty
                                 <p>No replies yet.</p>
                             @endforelse --}}
-
-                      @empty
-                        <p>No Comments</p>
-                      @endforelse
+                           
+                          @empty
+                            <p>No Comments</p>
+                          @endforelse
                        
                    
                   </div>
@@ -124,8 +125,8 @@
                        
                         <div class="col-lg-12">
                           <fieldset>
-                            <textarea name="content" rows="6" id="content" placeholder="Type your comment" ></textarea>
-                            @error('content')
+                            <textarea name="body" rows="6" id="body" placeholder="Type your comment" ></textarea>
+                            @error('body')
                                <span class="text-danger">{{ $message }}</span>
                             @enderror
                           </fieldset>
@@ -139,7 +140,7 @@
                     </form>
                   </div>
                 </div>
-              </div>
+              </div> 
             </div>
           </div>
 

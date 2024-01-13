@@ -12,44 +12,46 @@
             <div class="row">
               <div class="col-lg-12">
                  @forelse ($posts as $post)
-                  <div class="blog-post">
-                    <div class="blog-thumb">
-                        <img src={{asset("assets/images/banner-bg.jpg")}} alt="">
-                        {{-- <img src="{{asset('storage') }}" alt="Post image"> --}}
-  
-                    </div>
-                    <div class="down-content">
-                      <a href="{{route('posts',$post->slug)}}"><h4>{!!$post->title!!}</h4></a>
-                      <ul class="post-info">
-                        <li><a href="#">{{auth()->user()->name ?? 'TEST'}}</a></li>
-                        <li><a href="#">{{$post->created_at}}</a></li>
-                        <li><a href="#">12 Comments</a></li>
-                      </ul>
-                      <span>{!!$post->content!!}</span>
-                      <div class="post-options">
-                        <div class="row">
-                          <div class="col-6">
-                            <ul class="post-tags">
-                              <li><i class="fa fa-tags"></i></li>
-                              <li><a href="#">{{$post->category->name}}</a></li>
-                              {{-- <li><a href="#">Nature</a></li> --}}
-                            </ul>
-                          </div>
-                          <div class="col-6">
-                            <ul class="post-share">
-                              <li><i class="fa fa-share-alt"></i></li>
-                              <li><a href="#">Facebook</a>,</li>
-                              <li><a href="#"> Twitter</a></li>
-                            </ul>
+                    <div class="blog-post">
+                      <div class="blog-thumb">
+                          <img src={{asset("assets/images/banner-bg.jpg")}} alt="">
+                          {{-- <img src="{{asset('storage') }}" alt="Post image"> --}}
+    
+                      </div>
+                      <div class="down-content">
+                        <a href="{{route('posts',$post->slug)}}"><h4>{!!$post->title!!}</h4></a>
+                        <ul class="post-info">
+                          <li><a href="#">{{auth()->user()->name ?? 'TEST'}}</a></li>
+                          <li><a href="#">{{$post->created_at}}</a></li>
+                          <li><a href="#">12 Comments</a></li>
+                        </ul>
+                        <span>{!!$post->content!!}</span>
+                        <div class="post-options">
+                          <div class="row">
+                            <div class="col-6">
+                              <ul class="post-tags">
+                                <li><i class="fa fa-tags"></i></li>
+                                <li><a href="#">{{$post->category->name}}</a></li>
+                                {{-- <li><a href="#">Nature</a></li> --}}
+                              </ul>
+                            </div>
+                            <div class="col-6">
+                              <ul class="post-share">
+                                <li><i class="fa fa-share-alt"></i></li>
+                                <li><a href="#">Facebook</a>,</li>
+                                <li><a href="#"> Twitter</a></li>
+                              </ul>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
                  @empty
                      <p>No posts</p>
                  @endforelse
+                 
               </div>
+              
           
             </div>
           </div>

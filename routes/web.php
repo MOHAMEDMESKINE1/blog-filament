@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -36,5 +37,10 @@ Route::controller(CommentController::class)->group(function(){
 
     Route::post('/comments/{id}','store')->name('comments.store');
     Route::post('/comments/reply/{id}/{parent_id}','reply')->name('comments.reply');
+   
+});
+Route::controller(PostController::class)->group(function(){
+
+    Route::get('/posts','index')->name('posts.index');
    
 });

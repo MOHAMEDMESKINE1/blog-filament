@@ -58,7 +58,9 @@ class HomeController extends Controller
         }
         $post = Post::where("slug",$slug)->first();
 
-        return view('posts',compact("post","posts","categories","tags","latest_posts","comments"));
+        $all_posts =Post::all();
+
+        return view('posts',compact("post","all_posts","posts","categories","tags","latest_posts","comments"));
     }
     
     public function postsByTag($tagName,Request $request)
@@ -74,6 +76,7 @@ class HomeController extends Controller
         }else{
             $latest_posts = Post::latest()->get();
         }
+      
         return view('posts_tags', compact("posts","latest_posts","categories","tags"));
     }
 
